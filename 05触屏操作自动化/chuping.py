@@ -30,37 +30,27 @@ class Test_chuping():
 
 
 
-    def test_search(self):
+
+
+    def test_touchaction(self):
+
         '''
-            方法目标：学习元素的定位
-            Demo:
-                1、打开雪球APP
-                2、打开搜索输入框
-                3、输入中文阿里巴巴
-                4、选择第一条，点击
-                5、获取股价，并判断股价价格>200
+            学习Appium的 touchaction方法,从A处 移动到 B处
+
+        :return:
         '''
-        btn = self.driver.find_element_by_id("com.xueqiu.android:id/tv_search")
-        btn.click()
+        from appium.webdriver.common.touch_action import TouchAction
+        action = TouchAction(self.driver)
+        #获取页面的
+        width =  self.driver.get_window_rect()['width']
+        height = self.driver.get_window_rect()['height']
+        x = int(width/2)
+        y_start = int(height * 4/5)
+        y_end = int(height * 1 / 5)
 
-        btn.is_enabled()
-
-
-        self.driver.find_element_by_id("com.xueqiu.android:id/search_input_text").send_keys("阿里巴巴")
-
-        # print("fggg")
-        # sleep(10)
-        # self.driver.find_element_by_xpath("//*[@resource-id='com.xueqiu.android:id/name' and @text='阿里巴巴']").click()
-        sleep(10)
+        action.press(x=x,y=y_start).wait(200).move_to(x=1,y=y_end).release().perform()
 
 
-        #current_price = self.driver.find_element_by_id('com.xueqiu.android:id/current_price').text
-
-        #如果该元素出现多个值的话，采用find_elements_by_id 获取到列表里
-        current_all_price = self.driver.find_elements_by_id('com.xueqiu.android:id/current_price')
-        for  price in current_all_price:
-            print(price)
-            assert  price > 200
 
 
 

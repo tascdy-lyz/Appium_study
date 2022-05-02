@@ -67,7 +67,7 @@ class Test_Kongjian():
 
     def test_search(self):
         '''
-               学习元素的相关属性以继续相关的方法
+               app交互————学习元素的相关属性以继续相关的方法
                Demo:
                    1、打开雪球APP
                    2、定位首页的输入框
@@ -80,6 +80,7 @@ class Test_Kongjian():
         btn = self.driver.find_element_by_id("com.xueqiu.android:id/tv_search")
         #判断元素是否可用
         btn_name_value = btn.get_attribute('name')
+        btn.get_attribute('')
         print(f"输入框的name值为{btn_name_value}")
         print(f"输入框的左上角坐标为：{btn.location}")
         print(f"输入框的左上角坐标为：{btn.size}")
@@ -92,7 +93,7 @@ class Test_Kongjian():
 
 
             alibaba_is_display = self.driver.find_element_by_xpath("//android.widget.TextView[@resource-id='com.xueqiu.android:id/stockName' and @text='阿里巴巴']")
-
+            alibaba_is_display.get_attribute('displayed')
             if alibaba_is_display.is_displayed() == True:
                 print("搜索成功")
             else:

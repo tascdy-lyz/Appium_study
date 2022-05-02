@@ -21,4 +21,6 @@ class Test_WebBrowser():
     def test_browser(self):
         self.driver.get("http://m.baidu.com")
 
+        self.driver.find_element_by_css_selector('.index-kw')
+
         pass

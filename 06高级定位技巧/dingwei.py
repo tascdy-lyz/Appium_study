@@ -35,8 +35,6 @@ class Test_dingwei():
         btn = self.driver.find_element_by_id("com.xueqiu.android:id/tv_search")
         btn.click()
 
-
-
         self.driver.find_element_by_id("com.xueqiu.android:id/search_input_text").send_keys("阿里巴巴")
 
         ALIBABA_Second_Num = self.driver.find_element_by_xpath("//*[@text='09988']/../../..//*[@resource-id='dcom.xueqiu.android:id/current_price'")
@@ -46,12 +44,24 @@ class Test_dingwei():
 
     def test_uiselector_dingwei(self):
         '''
-            Uiautomator 定位方法
+            Uiautomator 定位方法 基本定位
+            【测试步骤】
+            1、打开雪球APP
+            2、点击我的
+            3、点击登录按钮
         :return:
         '''
 
-        self.driver.find_element_by_android_uiautomator('new UiSelector().text("button")')
-        self.driver.find_element_by_android_uiautomator('new UiSelector().textContains("button")')
+        self.driver.find_element_by_android_uiautomator('new UiSelector().text("我的")').click()
+        self.driver.find_element_by_android_uiautomator('new UiSelector().textContains("号密码")').click()
+        self.driver.find_element_by_android_uiautomator('new UiSelector().textStartsWith("请输入手机号")').send_keys("15934512723")
+
+
+        '''
+            通过父节点定位子节点
+        '''
+
+
         self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("button")')
 
     def test_uiautomator_scoll_dingwei(self):
